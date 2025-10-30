@@ -1,4 +1,0 @@
-platform:
-  name: tenant-a
-  namespace: tenant-a
-  description: "Demo tenant A"

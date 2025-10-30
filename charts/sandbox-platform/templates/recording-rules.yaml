@@ -1,0 +1,13 @@
+{{- if .Values.monitoring.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ .Values.tenant.name }}-rules
+  namespace: {{ .Values.tenant.name }}
+spec:
+  groups:
+    - name: sandbox.rules
+      rules:
+        - record: sandbox:requests:rate1m
+          expr: rate(http_requests_total[1m])
+{{- end }}

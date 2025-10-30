@@ -1,0 +1,6 @@
+apiVersion: v2
+name: sandbox-platform
+description: Helm chart to bootstrap a sandbox tenant (namespace, configs, rules)
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

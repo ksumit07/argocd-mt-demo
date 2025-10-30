@@ -1,0 +1,4 @@
+tenant:
+  name: tenant-a
+  env: staging
+  region: eu-west-1

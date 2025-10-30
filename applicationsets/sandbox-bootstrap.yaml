@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: sandbox-bootstrap
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  goTemplate: true
+  generators:
+    - git:
+        repoURL: "https://github.com/ksumit07/argocd-mt-demo.git"
+        revision: main
+        files:
+          - path: "sandboxes/*/platform.yaml"
+
+  template:
+    metadata:
+      name: "{{.tenant.name}}-sandbox"
+    spec:
+      project: default
+      sources:
+        - repoURL: "https://github.com/ksumit07/argocd-mt-demo.git"
+          targetRevision: main
+          path: charts/sandbox-platform
+          helm:
+            valuesObject:
+              tenant:
+                name: "{{.tenant.name}}"
+              platform:
+                env: "{{.tenant.env}}"
+                region: "{{.tenant.region}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

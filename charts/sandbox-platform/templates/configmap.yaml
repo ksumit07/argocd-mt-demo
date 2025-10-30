@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.tenant.name }}-platform-config
+  namespace: {{ .Values.tenant.name }}
+data:
+  environment: {{ .Values.platform.env }}
+  region: {{ .Values.platform.region }}

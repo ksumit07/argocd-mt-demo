@@ -1,0 +1,4 @@
+apiVersion: v2
+name: argocd-mt-demo
+version: 1.0.0
+description: Local demo for sandbox multitenant ArgoCD setup

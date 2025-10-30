@@ -1,0 +1,4 @@
+tenant:
+  name: tenant-b
+  env: production
+  region: us-east-1

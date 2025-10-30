@@ -1,0 +1,9 @@
+tenant:
+  name: default-tenant
+
+platform:
+  env: dev
+  region: local
+
+monitoring:
+  enabled: true
