@@ -1,4 +1,0 @@
-tenant:
-  name: tenant-d
-  env: dev
-  region: us-east-1
