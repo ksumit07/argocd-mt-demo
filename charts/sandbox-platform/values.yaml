@@ -6,4 +6,4 @@ platform:
   region: local
 
 monitoring:
-  enabled: true
+  enabled: false
