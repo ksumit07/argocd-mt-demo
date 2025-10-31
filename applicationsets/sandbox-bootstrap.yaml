@@ -32,6 +32,14 @@ spec:
                 env: "{{.tenant.env}}"
                 region: "{{.tenant.region}}"
                 image: "{{ .service.image }}"
+        - repoURL: https://github.com/ksumit07/argocd-mt-demo.git
+          targetRevision: main
+          path: charts/nginx
+          helm:
+            valuesObject:
+              image:
+                repository: "{{ .service.image.repository }}"
+                tag: "{{ .service.image.tag }}"
       destination:
         server: https://kubernetes.default.svc
         namespace: "{{.tenant.name}}"
