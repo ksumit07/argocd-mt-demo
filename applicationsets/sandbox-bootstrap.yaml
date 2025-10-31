@@ -32,7 +32,7 @@ spec:
                 region: "{{.tenant.region}}"
       destination:
         server: https://kubernetes.default.svc
-        namespace: argocd
+        namespace: "{{.tenant.name}}"
       syncPolicy:
         automated:
           prune: true
