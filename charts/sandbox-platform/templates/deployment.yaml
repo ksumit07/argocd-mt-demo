@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.tenant.name }}-app
+  namespace: {{ .Values.tenant.name }}
+  labels:
+    app: {{ .Values.tenant.name }}-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.tenant.name }}-app
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.tenant.name }}-app
+    spec:
+      containers:
+        - name: {{ .Values.tenant.name }}-app
+          image: {{ .Values.platform.image }}
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ENV
+              value: {{ .Values.platform.env }}
+            - name: REGION
+              value: {{ .Values.platform.region }}

@@ -30,6 +30,7 @@ spec:
               platform:
                 env: "{{.tenant.env}}"
                 region: "{{.tenant.region}}"
+                image: "localhost:5001/go-sandbox-app:{{.tenant.name}}-v1"
       destination:
         server: https://kubernetes.default.svc
         namespace: "{{.tenant.name}}"
