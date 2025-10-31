@@ -9,6 +9,11 @@ spec:
     repoURL: https://github.com/ksumit07/argocd-mt-demo.git
     targetRevision: HEAD
     path: charts/nginx
+    helm:
+      values: |
+        image:
+          repository: localhost:5001/go-sandbox-app
+          tag: tenant-a-v1
   destination:
     server: https://kubernetes.default.svc
     namespace: tenant-a
