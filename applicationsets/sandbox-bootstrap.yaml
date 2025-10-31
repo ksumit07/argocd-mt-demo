@@ -13,6 +13,7 @@ spec:
         revision: main
         files:
           - path: "sandboxes/*/platform.yaml"
+          - path: "sandboxes/*/service.yaml"
 
   template:
     metadata:
@@ -30,7 +31,7 @@ spec:
               platform:
                 env: "{{.tenant.env}}"
                 region: "{{.tenant.region}}"
-                image: "localhost:5001/go-sandbox-app:{{.tenant.name}}-v1"
+                image: "{{ .service.image }}"
       destination:
         server: https://kubernetes.default.svc
         namespace: "{{.tenant.name}}"
